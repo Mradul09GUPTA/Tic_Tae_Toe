@@ -1,0 +1,25 @@
+package TIc_Tac_Toe.Strategies.botPlayingStrategy;
+import TIc_Tac_Toe.Model.Board;
+import TIc_Tac_Toe.Model.Cell;
+import TIc_Tac_Toe.Model.CellState;
+import TIc_Tac_Toe.Model.Move;
+import TIc_Tac_Toe.Model.Player;
+
+public class EasyBotPlayingStrategy implements BotPlayingStrategy{
+    @Override
+    public Move makeMove(Board board, Player player) {
+        // Bot is going to iterate over the board
+        // And pick the first empty cell and make the move there
+        for (int i=0; i<board.getDimension(); i++) {
+            for (int j=0; j< board.getDimension(); j++) {
+                Cell cell = board.getBoard().get(i).get(j);
+                if(cell.getCellState() == CellState.EMPTY){
+                    return new Move(cell, player);
+                }
+            }
+        }
+        return null;
+    }
+
+    
+}
